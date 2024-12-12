@@ -1,6 +1,34 @@
 /* =====================================================
    Resume section tabs and tab contents
 ===================================================== */
+const resumeTabs = document.querySelector(".resume-tabs");
+const resumePortfolioTabBtns = resumeTabs.querySelectorAll(".tab-btn");
+const resumeTabContents = document.querySelectorAll(".resume-tab-content");
+
+var resumeTabNav = function(resumeTabIndex){
+   resumeTabContents.forEach((resumeTabContent) => {
+      resumeTabContent.style.display = "none";
+      resumeTabContent.classList.remove("active");
+   });
+
+   resumePortfolioTabBtns.forEach((resumePortfolioTabBtn) => {
+      resumePortfolioTabBtn.classList.remove("active");
+   });
+
+   resumeTabContents[resumeTabIndex].style.display = "flex";
+
+   setTimeout(() => {
+      resumeTabContents[resumeTabIndex].classList.add("active");
+   }, 100);
+
+   resumePortfolioTabBtns[resumeTabIndex].classList.add("active");
+}
+
+resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
+   resumePortfolioTabBtn.addEventListener("click", () => {
+      resumeTabNav(i);
+   });
+});
 
 /* =====================================================
    Service modal open/close function
