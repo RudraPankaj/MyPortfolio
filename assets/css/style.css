@@ -566,6 +566,7 @@ body{
    color: var(--color-02);
    font-size: var(--h1-font-size);
    font-weight: var(--font-bold);
+   min-width: 280px;
 }
 
 .avatar-info .what-i-do{
@@ -694,25 +695,8 @@ body{
 }
 
 .typewriter h1 {
-   overflow: hidden; /* Ensures the content is not revealed until the animation */
-   border-right: .1em solid orange; /* The typwriter cursor */
-   white-space: nowrap; /* Keeps the content on a single line */
-   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-   animation: 
-     typing 1.5s steps(40, end),
-     blink-caret .4s step-end infinite;
- }
- 
- /* The typing effect */
- @keyframes typing {
-   from { width: 0 }
-   to { width: 100% }
- }
- 
- /* The typewriter cursor effect */
- @keyframes blink-caret {
-   0%{ border-color: orange; }
-   100% { border-color: transparent; }
+   overflow: hidden;
+   white-space: wrap;
  }
 
 /* =========================================
@@ -1015,6 +999,14 @@ body{
    justify-content: center;
    align-items: center;
    overflow-y: auto;
+   display: none;
+   opacity: 0;
+   transition: opacity .3s ease;
+}
+
+.service-modal-backdrop.active{
+   opacity: 1;
+   transition: opacity .5s ease;
 }
 
 .service-modal{
@@ -1027,6 +1019,15 @@ body{
    border-radius: 15px;
    border-bottom: 5px solid var(--primary-color);
    overflow: hidden;
+   transform: scale(0);
+   opacity: 0;
+   transition: transform .5s, opacity .5s;
+}
+
+.service-modal.active{
+   transform: scale(1);
+   opacity: 1;
+   transition: transform .5s, opacity .5s;
 }
 
 .modal-close-btn{
@@ -1095,6 +1096,23 @@ body{
    font-size: var(--h4-font-size);
    font-weight: var(--font-semi-bold);
    margin-bottom: 15px;
+}
+
+.modal-content .my-services li{
+   display: flex;
+   margin-bottom: 25px;
+}
+
+.modal-content .my-services li i{
+   color: var(--primary-color);
+   font-size: 1.4rem;
+   margin-right: 10px;
+}
+
+.modal-content .my-services li p{
+   color: var(--color-02);
+   font-size: var(--base-font-size);
+   line-height: 22px;
 }
 
 /* =========================================

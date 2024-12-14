@@ -33,6 +33,32 @@ resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
 /* =====================================================
    Service modal open/close function
 ===================================================== */
+const serviceCardWithModals = document.querySelectorAll(".service-container .card-with-modal");
+
+serviceCardWithModals.forEach((serviceCardWithModal) => {
+   const serviceCard = serviceCardWithModal.querySelector(".service-card");
+   const serviceBackDrop = serviceCardWithModal.querySelector(".service-modal-backdrop");
+   const serviceModal = serviceCardWithModal.querySelector(".service-modal");
+   const modalCloseBtn = serviceCardWithModal.querySelector(".modal-close-btn");
+
+   serviceCard.addEventListener("click", () => {
+      serviceBackDrop.style.display = "flex";
+
+      setTimeout(() => {
+         serviceBackDrop.classList.add("active");
+      }, 100);
+
+      setTimeout(() => {
+         serviceModal.classList.add("active");
+      }, 300);
+   });
+
+   modalCloseBtn.addEventListener("click", () => {
+      serviceBackDrop.style.display = "none";
+      serviceBackDrop.classList.remove("active");
+      serviceModal.classList.remove("active");
+   });
+});
 
 /* =====================================================
    Portfolio modals, tabs and cards
@@ -93,3 +119,22 @@ resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
 // Common reveal options to create reveal animations.
 
 // Target elements and specify options to create reveal animations.
+
+/* =====================================================
+   TypeWriter JS animations
+===================================================== */
+const typewriter = document.querySelector('.typewriter h1');
+const text = typewriter.textContent;
+typewriter.textContent = '';
+
+let index = 0;
+
+function type() {
+  if (index < text.length) {
+    typewriter.textContent += text.charAt(index);
+    index++;
+    setTimeout(type, 100); // Adjust the delay as needed
+  }
+}
+
+type();
