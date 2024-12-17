@@ -6,6 +6,7 @@
   <title>Design a Responsive Modern Personal Portfolio Website - Html, Css & Javascript</title>
   
   <!--========== Swiper CSS ==========-->
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 
   <!--========== Main style sheet ==========-->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -44,14 +45,14 @@
   </header>
 
   <!--========== Bottom navigation menu ==========-->
-  <!-- <div class="bottom-nav-container">
+  <div class="bottom-nav-container">
     <div class="bottom-nav">
       <div class="bottom-nav-inner">
         <i class="ri-arrow-left-down-line menu-hide-btn"></i>
         <ul class="menu">
           <li class="menu-item"><a href="#home" class="current"><i class="ri-home-4-line"></i><span>Home</span></a></li>
           <li class="menu-item"><a href="#about"><i class="ri-user-line"></i><span>About</span></a></li>
-          <li class="menu-item"><a href="#resume"><i class="ri-user-line"></i><span>Resume</span></a></li>
+          <li class="menu-item"><a href="#resume"><i class="ri-quote-text"></i><span>Resume</span></a></li>
           <li class="menu-item"><a href="#service"><i class="ri-service-line"></i><span>Service</span></a></li>
           <li class="menu-item"><a href="#portfolio"><i class="ri-briefcase-line"></i><span>Portfolio</span></a></li>
           <li class="menu-item"><a href="#contact"><i class="ri-chat-1-line"></i><span>Contact</span></a></li>
@@ -62,10 +63,10 @@
       <div class="bar-01"></div>
       <div class="bar-02"></div>
     </div>
-  </div> -->
+  </div>
 
   <!--========== Home ==========-->
-  <!-- <section class="sue-section nav-menu-section" id="home">
+  <section class="sue-section nav-menu-section" id="home">
     <div class="sue-container home-container">
       <div class="sue-wrapper">
         <div class="home-social">
@@ -104,10 +105,10 @@
         </a>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!--========== About Me ==========-->
-  <!-- <section class="sue-section nav-menu-section" id="about">
+  <section class="sue-section nav-menu-section" id="about">
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title about-title">
@@ -149,10 +150,10 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!--========== My Resume ==========-->
-  <!-- <section class="sue-section nav-menu-section" id="resume">
+  <section class="sue-section nav-menu-section" id="resume">
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title">
@@ -360,10 +361,10 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!--========== Services ==========-->
-  <!-- <section class="sue-section nav-menu-section" id="service">
+  <section class="sue-section nav-menu-section" id="service">
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title">
@@ -472,7 +473,7 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!--========== Portfolio ==========-->
   <section class="sue-section nav-menu-section" id="portfolio">
@@ -483,16 +484,16 @@
           <p>My Creative Works</p>
         </div>
         <div class="portfolio-tabs">
-          <a class="tab-btn" active>All</a>
-          <a class="tab-btn">Web Design</a>
-          <a class="tab-btn">UX/UI Design</a>
-          <a class="tab-btn">Photoshop</a>
-          <a class="tab-btn">Templates</a>
+          <a class="tab-btn active" data-filter="all">All</a>
+          <a class="tab-btn" data-filter="web-design">Web Design</a>
+          <a class="tab-btn" data-filter="ui-design">UX/UI Design</a>
+          <a class="tab-btn" data-filter="photoshop">Photoshop</a>
+          <a class="tab-btn" data-filter="templates">Templates</a>
         </div>
         <div class="section-content">
           <div class="portfolio-container">
 
-            <div class="card-with-modal">
+            <div class="card-with-modal web-design">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-01.jpg" alt="">
@@ -503,9 +504,22 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-01.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="card-with-modal">
+            <div class="card-with-modal ui-design">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-02.jpg" alt="">
@@ -516,9 +530,22 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-02.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="card-with-modal">
+            <div class="card-with-modal templates">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-03.jpg" alt="">
@@ -529,9 +556,22 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-03.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="card-with-modal">
+            <div class="card-with-modal photoshop">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-04.jpg" alt="">
@@ -542,9 +582,22 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-04.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="card-with-modal">
+            <div class="card-with-modal web-design">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-05.jpg" alt="">
@@ -555,9 +608,22 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-05.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="card-with-modal">
+            <div class="card-with-modal templates">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-06.jpg" alt="">
@@ -568,9 +634,22 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-06.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="card-with-modal">
+            <div class="card-with-modal ui-design">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-07.jpg" alt="">
@@ -581,9 +660,22 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-07.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="card-with-modal">
+            <div class="card-with-modal web-design">
               <div class="portfolio-card">
                 <div class="card-img">
                   <img src="assets/images/portfolio images/portfolio-img-08.jpg" alt="">
@@ -594,19 +686,191 @@
                   <i class="ri-arrow-right-up-line card-btn"></i>
                 </div>
               </div>
+
+              <div class="portfolio-modal-backdrop">
+                <div class="portfolio-modal">
+                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
+                  <div class="modal-content">
+                    <div class="modal-img">
+                      <img src="assets/images/portfolio%20images/portfolio-img-08.jpg" alt="image error">
+                    </div>
+                    <h4 class="modal-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam et maiores iure, amet officia facere nihil facilis nemo sit, consectetur consequuntur illum excepturi hic. Facilis commodi reprehenderit aut esse enim consequuntur numquam tempora, at error voluptatem ut quas cupiditate inventore rerum nesciunt explicabo libero nam amet deserunt aspernatur fugit quidem.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
         </div>
+      </div>
+
+      <div class="testimonials">
+        <div class="section-title">
+          <h3>Awesome Clients</h3>
+          <p>Words From My Clients</p>
+        </div>
+        <div class="section-content">
+          <div class="swiper sue-client-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="client-img">
+                  <img src="assets/images/client images/client-img-01.jpg" alt="client1">
+                </div>
+                <div class="client-details">
+                  <h3>James Carter</h3>
+                  <span>Software Engineer</span>
+                  <p>Hello, I'm James Carter, a passionate Software Engineer. I enjoy building scalable applications and working with cutting-edge technologies to deliver high-quality solutions.</p>
+                </div>
+              </div>
+              
+              <div class="swiper-slide">
+                <div class="client-img">
+                  <img src="assets/images/client images/client-img-02.jpg" alt="client2">
+                </div>
+                <div class="client-details">
+                  <h3>Sophia Bennett</h3>
+                  <span>Product Manager</span>
+                  <p>I'm Sophia Bennett, a Product Manager dedicated to creating seamless user experiences. I thrive on bringing innovative ideas to life and leading successful product launches.</p>
+                </div>
+              </div>
+              
+              <div class="swiper-slide">
+                <div class="client-img">
+                  <img src="assets/images/client images/client-img-03.jpg" alt="client3">
+                </div>
+                <div class="client-details">
+                  <h3>Emma Wilson</h3>
+                  <span>UI/UX Designer</span>
+                  <p>Hi, I'm Emma Wilson, a creative UI/UX Designer focused on crafting user-centric designs. My goal is to make technology intuitive and accessible for everyone.</p>
+                </div>
+              </div>              
+            </div>
+            <div class="swiper-button-next">
+              <i class="ri-arrow-right-s-line"></i>
+            </div>
+            <div class="swiper-button-prev">
+              <i class="ri-arrow-left-s-line"></i>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!--========== Contact Me ==========-->
+  <div class="sue-section nav-menu-section" id="contact">
+    <div class="sue-container sue-sub-container">
+      <div class="sue-wrapper">
+        <div class="section-title">
+          <h3>Contact Me</h3>
+          <p>Get In Touch</p>
+        </div>
+        <div class="section-content">
+          <div class="contact-container">
+
+            <div class="contact-info">
+              <h3>Contact Info</h3>
+              <ul class="contact-details">
+
+                <li class="contact-item">
+                  <div class="contact-icon">
+                    <i class="ri-mail-send-fill"></i>
+                  </div>
+                  <div class="contact-method">
+                    <span>E-mail</span>
+                    <h4>pankajrudra.hire@gmail.com</h4>
+                    <a>Send <i class="ri-arrow-right-up-line"></i></a>
+                  </div>
+                </li>
+
+                <li class="contact-item">
+                  <div class="contact-icon">
+                    <i class="ri-whatsapp-line"></i>
+                  </div>
+                  <div class="contact-method">
+                    <span>Whatsapp</span>
+                    <h4>+88 01632-181962</h4>
+                    <a href="https://wa.me/+8801632181962?text=Hello+there!+How+can+I+help+you?" target="_blank">Send <i class="ri-arrow-right-up-line"></i></a>
+                  </div>
+                </li>
+
+                <li class="contact-item">
+                  <div class="contact-icon">
+                    <i class="ri-messenger-fill"></i>
+                  </div>
+                  <div class="contact-method">
+                    <span>Messenger</span>
+                    <h4>pankajrudra42</h4>
+                    <a href="https://m.me/pankajrudra42" target="_blank">Send <i class="ri-arrow-right-up-line"></i></a>
+                  </div>
+                </li>
+
+              </ul>
+
+              <h3>Social Info</h3>
+              <ul class="contact-social-links">
+                <li><a href="https://m.me/pankajrudra42" target="_blank"><i class="ri-messenger-fill"></i></a></li>
+                <li><a href="https://x.com/Pankaj55881720" target="_blank"><i class="ri-twitter-x-fill"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/mr-pankaj-rudra/" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+              </ul>
+
+            </div>
+
+            <div class="contact-form-body">
+              <h2>Let's work <span>together.</span></h2>
+              <p>Please fill out the form on this section to contact with me. Or call between 9:30 a.m. and 8:00 p.m. ET, Monday through Friday.</p>
+              <form action="" method="POST" id="sue-contact-form">
+                <div class="input-group">
+                  <input type="text" name="full-name" placeholder="Name *" required>
+                </div>
+                <div class="input-group">
+                  <input type="text" name="email" placeholder="Email *" required>
+                </div>
+                <div class="input-group">
+                  <input type="text" name="subject" placeholder="Your Subject *" required>
+                </div>
+                <div class="input-group">
+                  <textarea name="message" placeholder="Your Message *" required></textarea>
+                </div>
+                <div class="input-group send-message">
+                  <button class="sue-main-btn fill-btn submit-btn" name="submit" type="submit">Send Message</button>
+                  <div class="contact-form-alert"></div>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--========== Footer ==========-->
+  <footer class="sue-footer">
+    <div class="sue-container">
+      <div class="inner">
+        <div class="sue-logo">
+          <a href="#home"><span>Pankaj</span></a>
+        </div>
+        <ul class="footer-menu">
+          <li class="menu-item"><a href="#about">About</a></li>
+          <li class="menu-item"><a href="#resume">Resume</a></li>
+          <li class="menu-item"><a href="#service">Service</a></li>
+          <li class="menu-item"><a href="#portfolio">Portfolio</a></li>
+        </ul>
+        <p class="copy-right">© All rights reserved by <a href="">Pankaj Rudra</a></p>
+      </div>
+    </div>
+  </footer>
 
   <!--========== Swiper JS ==========-->
+  <script src="assets/js/swiper-bundle.min.js"></script>
 
   <!--========== EmailJS ==========-->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!--========== Main javascript ==========-->
   <script src="assets/js/main.js"></script>

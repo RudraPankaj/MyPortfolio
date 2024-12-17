@@ -65,26 +65,172 @@ serviceCardWithModals.forEach((serviceCardWithModal) => {
 ===================================================== */
 
 // Filter portfolio cards according to portfolio tabs.
+document.addEventListener("DOMContentLoaded", () => {
+   const portfolioTabs = document.querySelector(".portfolio-tabs");
+   const portfolioTabBtns = portfolioTabs.querySelectorAll(".tab-btn");
+   const cardWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
+
+   portfolioTabBtns.forEach((tabBtn) => {
+      tabBtn.addEventListener("click", () => {
+         const filter = tabBtn.getAttribute("data-filter");
+
+         cardWithModals.forEach((cardWithModal) => {
+            if(filter === "all" || cardWithModal.classList.contains(filter)){
+               cardWithModal.style.opacity = "1";
+               cardWithModal.classList.remove("hidden");
+
+               setTimeout(() => {
+                  cardWithModal.style.opacity = "1";
+                  cardWithModal.style.transition = ".5s ease";
+               }, 1);
+            }
+            else {
+               cardWithModal.classList.add("hidden");
+
+               setTimeout(() => {
+                  cardWithModal.style.opacity = "0";
+               }, 1);
+            }
+         });
+         // Add active class to the clicked tab button
+         portfolioTabBtns.forEach((tabBtn) => tabBtn.classList.remove("active"));
+         tabBtn.classList.add("active");
+      });
+   });
+});
 
 // Open/Close Portfolio modals.
+const portfolioCardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
+
+portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
+   const portfolioCard = portfolioCardWithModal.querySelector(".portfolio-card");
+   const portfolioBackdrop = portfolioCardWithModal.querySelector(".portfolio-modal-backdrop");
+   const portfolioModal = portfolioCardWithModal.querySelector(".portfolio-modal");
+   const modalCloseBtn = portfolioCardWithModal.querySelector(".modal-close-btn");
+
+   portfolioCard.addEventListener("click", () => {
+      portfolioBackdrop.style.display = "flex";
+
+      setTimeout(() => {
+         portfolioBackdrop.classList.add("active");
+      }, 300);
+
+      setTimeout(() => {
+         portfolioModal.classList.add("active");
+      }, 300);
+   });
+
+   modalCloseBtn.addEventListener("click", () => {
+      setTimeout(() => {
+         portfolioBackdrop.style.display = "none";
+      }, 300);
+
+      setTimeout(() => {
+         portfolioBackdrop.classList.remove("active");
+         portfolioModal.classList.remove("active");
+      }, 100);
+   });
+});
 
 /* =====================================================
    Testimonial Swiper
 ===================================================== */
+var swiper = new Swiper(".sue-client-swiper", {
+   slidesPerView: 1,
+   spaceBetween: 30,
+   loop: true,
+   pagination: {
+     el: ".swiper-pagination",
+     clickable: true,
+   },
+   navigation: {
+     nextEl: ".swiper-button-next",
+     prevEl: ".swiper-button-prev",
+   },
+ });
 
 /* =====================================================
    Send/Receive emails from contact form - EmailJS
 ===================================================== */
+(function() {
+   // https://dashboard.emailjs.com/admin/account
+   emailjs.init({
+     publicKey: "HO_deBMvItp4D23Fh",
+   });
+})();
+
+sueContactForm = document.getElementById("sue-contact-form");
+sueContactFormAlert = document.querySelector(".contact-form-alert");
+
+sueContactForm.addEventListener('submit', function(event) {
+   event.preventDefault();
+   // these IDs from the previous steps
+   emailjs.sendForm('service_xwvzt5m', 'template_3l5oglb', '#sue-contact-form')
+       .then(() => {
+         //   console.log('SUCCESS!');
+         sueContactFormAlert.innerHTML = "<span>Your message sent successfully! <i class='ri-checkbox-circle-fill'></i></span>";
+         sueContactForm.reset();
+
+         setTimeout(() => {
+            sueContactFormAlert.innerHTML = "";
+         }, 5000);
+       }, (error) => {
+         //   console.log('FAILED...', error);
+         sueContactFormAlert.innerHTML = "<span>Message not sent! <i class='ri-error-warning-fill'></i></span>";
+         sueContactFormAlert.title = error;
+       });
+});
 
 /* =====================================================
    Shrink the height of the header on scroll
 ===================================================== */
+window.addEventListener("scroll", () => {
+   const sueHeader = document.querySelector(".sue-header");
+
+   sueHeader.classList.toggle("shrink", window.scrollY > 0);
+});
 
 /* =====================================================
    Bottom navigation menu
 ===================================================== */
+//smooth navigation from id to id
+// document.querySelectorAll('.bottom-nav .menu li a').forEach((link) => {
+//    link.addEventListener('click', function (e) {
+//       e.preventDefault(); // Prevent default anchor behavior
+
+//       const targetId = this.getAttribute('href').substring(1); // Get the target id without '#'
+//       const targetSection = document.getElementById(targetId);
+
+//       if (targetSection) {
+//          targetSection.scrollIntoView({
+//             behavior: 'smooth', // Enables smooth scroll
+//             block: 'start' // Aligns to the top of the target section
+//          });
+//       }
+//    });
+// });
 
 // Each bottom navigation menu items active on page scroll.
+window.addEventListener("scroll", () => {
+   const navMenuSections = document.querySelectorAll(".nav-menu-section");
+   const scrollY = window.scrollY;
+
+   navMenuSections.forEach((navMenuSection) => {
+      let sectionHeight = navMenuSection.offsetHeight;
+      let sectionTop = navMenuSection.offsetTop - 50;
+      let id = navMenuSection.getAttribute("id");
+
+      const targetLink = document.querySelector(".bottom-nav .menu li a[href*='" + id + "']");
+      
+      if (targetLink) {
+         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            targetLink.classList.add("current");
+         } else {
+            targetLink.classList.remove("current");
+         }
+      }
+   });
+});
 
 // Javascript to show bottom navigation menu on home(page load).
 
