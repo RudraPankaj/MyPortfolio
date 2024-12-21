@@ -327,7 +327,18 @@ body{
    position: fixed;
    left: 50%;
    transform: translateX(-50%);
+   /* bottom: 50px; */
+   bottom: -75px;
+   opacity: 0;
+   transition: .5s ease, .3s ease;
+   transition-property: bottom, opacity;
+}
+
+.bottom-nav.active{
    bottom: 50px;
+   opacity: 1;
+   transition: .5s ease, .3s ease;
+   transition-property: bottom, opacity;
 }
 
 .bottom-nav-inner{

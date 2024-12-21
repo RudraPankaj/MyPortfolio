@@ -193,23 +193,6 @@ window.addEventListener("scroll", () => {
 /* =====================================================
    Bottom navigation menu
 ===================================================== */
-//smooth navigation from id to id
-// document.querySelectorAll('.bottom-nav .menu li a').forEach((link) => {
-//    link.addEventListener('click', function (e) {
-//       e.preventDefault(); // Prevent default anchor behavior
-
-//       const targetId = this.getAttribute('href').substring(1); // Get the target id without '#'
-//       const targetSection = document.getElementById(targetId);
-
-//       if (targetSection) {
-//          targetSection.scrollIntoView({
-//             behavior: 'smooth', // Enables smooth scroll
-//             block: 'start' // Aligns to the top of the target section
-//          });
-//       }
-//    });
-// });
-
 // Each bottom navigation menu items active on page scroll.
 window.addEventListener("scroll", () => {
    const navMenuSections = document.querySelectorAll(".nav-menu-section");
@@ -233,6 +216,11 @@ window.addEventListener("scroll", () => {
 });
 
 // Javascript to show bottom navigation menu on home(page load).
+window.addEventListener("DOMContentLoaded", () => {
+   const bottomNav = document.querySelector(".bottom-nav");
+
+   bottomNav.classList.toggle("active", window.scrollY < 10);
+});
 
 // Javascript to show/hide bottom navigation menu on home(scroll).
 
