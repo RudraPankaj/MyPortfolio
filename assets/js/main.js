@@ -223,14 +223,72 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // Javascript to show/hide bottom navigation menu on home(scroll).
+const bottomNav = document.querySelector(".bottom-nav");
+const menuHideBtn = document.querySelector(".menu-hide-btn");
+const menuShowBtn = document.querySelector(".menu-show-btn");
+var navTimeout;
+
+window.addEventListener("scroll", () => {
+   bottomNav.classList.add("active");
+   menuShowBtn.classList.remove("active");
+
+   if(window.scrollY <= 10){
+      menuHideBtn.classList.remove("active");
+
+      function scrollStopped(){
+         bottomNav.classList.add("active");
+      }
+
+      clearTimeout(navTimeout);
+      navTimeout = setTimeout(scrollStopped, 2500);
+   }
+
+   if(window.scrollY > 10){
+      menuHideBtn.classList.add("active");
+
+      function scrollStopped(){
+         bottomNav.classList.remove("active");
+         menuShowBtn.classList.add("active");
+      }
+
+      clearTimeout(navTimeout);
+      navTimeout = setTimeout(scrollStopped, 2500);
+   }
+});
 
 // Hide bottom navigation menu on click menu-hide-btn.
+menuHideBtn.addEventListener("click", () => {
+   bottomNav.classList.toggle("active");
+   menuHideBtn.classList.toggle("active");
+   menuShowBtn.classList.toggle("active");
+});
 
 // Show bottom navigation menu on click menu-show-btn.
+menuShowBtn.addEventListener("click", () => {
+   bottomNav.classList.toggle("active");
+   menuHideBtn.classList.add("active");
+   menuShowBtn.classList.toggle("active");
+});
 
 /* =====================================================
    To-top-button with scroll indicator bar
 ===================================================== */
+window.addEventListener("scroll", () => {
+   const toTopBtn = document.querySelector(".to-top-btn");
+   
+
+   toTopBtn.classList.toggle("active", window.scrollY > 0);
+
+   // scroll indicator bar
+   const scrollIndicatorBar = document.querySelector(".scroll-indicator-bar");
+
+   const pageScroll = document.body.scrollTop || document.documentElement.scrollTop;
+   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+   const scrollValue = (pageScroll / height) * 100;
+
+   scrollIndicatorBar.style.height = scrollValue + "%";
+});
 
 /* =====================================================
    Customized cursor on mousemove

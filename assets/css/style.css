@@ -192,6 +192,49 @@ body{
 /* ========== Customized cursor ========== */
 
 /* ========== To top button with scroll indicator bar ========== */
+.to-top-btn{
+   z-index: var(--z-fixed);
+   position: fixed;
+   background: hsl(var(--hue) 54% 74% / .2);
+   height: 100px;
+   width: 2px;
+   bottom: 25px;
+   right: -30px;
+   cursor: pointer;
+   transition: all .3s ease;
+}
+
+.to-top-btn.active{
+   right: 30px;
+}
+
+.to-top-btn a{
+   color: var(--color-01);
+   transition: .3s;
+}
+
+.to-top-btn a:hover{
+   color: var(--hover-color);
+}
+
+.to-top-btn a span{
+   position: absolute;
+   left: 0;
+   bottom: 155px;
+   transform: rotateZ(90deg);
+   transform-origin: left;
+   font-size: .85rem;
+   text-transform: uppercase;
+   white-space: nowrap;
+}
+
+.to-top-btn .scroll-indicator-bar{
+   position: absolute;
+   background: var(--color-01);
+   width: 2px;
+   height: auto;
+   opacity: .5;
+}
 
 /* ========== Buttons ========== */
 .sue-main-btn{
@@ -427,6 +470,13 @@ body{
    transition: .3s ease;
    pointer-events: none;
    opacity: 0;
+   transition: .5s ease;
+}
+
+.menu-hide-btn.active{
+   pointer-events: all;
+   opacity: 1;
+   transition: .5s ease;
 }
 
 .bottom-nav .menu-hide-btn:hover{
@@ -455,9 +505,18 @@ body{
    opacity: 0;
    border-radius: 5px;
    cursor: pointer;
+   transition: .5s ease, .3s ease;
+   transition-property: bottom, opacity;
    overflow: hidden;
    animation: wiggle 2s linear infinite;
    animation-delay: 1s;
+}
+
+.menu-show-btn.active{
+   bottom: 50px;
+   opacity: 1;
+   transition: .5s ease, .3s ease;
+   transition-property: bottom, opacity;
 }
 
 @keyframes wiggle {
