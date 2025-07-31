@@ -83,6 +83,56 @@
 }
 
 /* ======= Light theme ======= */
+.light-theme{
+   /* ======= Changeable colors for dark/light themes ======= */
+   --color-01: hsl(var(--hue) 26% 12%); /* primary to dark */
+   --color-02: hsl(var(--hue) 26% 12%); /* white to dark */
+   --color-03: hsl(var(--hue) 45% 98%); /* dark to white */
+   --color-04: hsl(var(--hue) 9% 46%); /* light-graygray to dark-gray */
+   --color-05: hsl(var(--hue) var(--sat) var(--light)); /* dark to primary */
+
+   --body-color: hsl(var(--hue) 45% 98%); /* dark to white */
+
+   /* ======= Background colors ======= */
+   --bottom-nav-bg: hsl(var(--hue) 32% 85% / .8);
+   --card-bg: hsl(0 0% 100%);
+   --modal-backdrop-bg: hsl(var(--hue) 50% 12% / .5);
+   --footer-bg: linear-gradient(360deg, hsl(var(--hue) var(--sat) var(--light)), hsl(var(--hue) var(--sat) var(--light) / .75));
+
+   --scrollbar-color: hsl(var(--hue) 9% 60%);
+   --scrollbar-thumb: hsl(var(--hue) 9% 25%;
+   --scrollbar-thumb-hover: hsl(var(--hue) 9% 17%));
+
+   .bottom-nav .menu-hide-btn{
+      box-shadow: 0 2px 4px hsl(0, 0%, 1%, .25);
+   }
+
+   .pro-card,
+   .skill-card,
+   .service-card,
+   .portfolio-card,
+   .contact-form-body{
+      box-shadow: 0 2px 8px hsl(0, 0%, 1%, .05);
+   }
+
+   .contact-icon,
+   .contact-social-links li{
+      box-shadow: 0 2px 4px hsl(0, 0%, 1%, .1);
+   }
+
+   .sue-footer .copy-right,
+   .sue-footer .copy-right a{
+      color: hsl(var(--hue) 26% 30%);
+   }
+
+   .sue-footer .copy-right a:hover{
+      color: hsl(var(--hue) 0% 0%);
+   }
+
+   .to-top-btn{
+      background: hsl(var(--hue) 26% 12% / .2);
+   }
+}
 
 /* =========================================
    Reset / Normalize
@@ -190,6 +240,42 @@ body{
 }
 
 /* ========== Customized cursor ========== */
+.cursor{
+   z-index: var(--z-max);
+   position: fixed;
+   pointer-events: none;
+}
+
+.cursor-dot{
+   position: absolute;
+   background: var(--primary-color);
+   width: 5px;
+   height: 5px;
+   transform: translate(-50%, -50%);
+   border-radius: 50%;
+   transition-property: top, left, width, height;
+   transition-duration: .03s, .03s, .3s, .3s;
+}
+
+.cursor-dot.large{
+   background: hsl(var(--hue) var(--sat) var(--light) / .35);
+   width: 75px;
+   height: 75px;
+   transition-property: top, left, width, height;
+   transition-duration: .03s, .03s, .5s, .5s;
+}
+
+.cursor-circle{
+   position: absolute;
+   border: 2px solid var(--primary-color);
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   opacity: .5;
+   transform: translate(-50%, -50%);
+   transition-property: top, left;
+   transition-duration: .09s, .09s;
+}
 
 /* ========== To top button with scroll indicator bar ========== */
 .to-top-btn{
@@ -264,6 +350,10 @@ body{
 
 .border-btn{
    border: 2px solid var(--color-01);
+}
+
+.border-btn a{
+   color: var(--color-01);
 }
 
 .fill-btn{
@@ -354,8 +444,20 @@ body{
    transform: rotate(-15deg);
 }
 
-.theme-btn .moon-icon{
+/* .theme-btn .moon-icon{
    display: none;
+} */
+
+.theme-btn.active-sun-icon .moon-icon,
+.theme-btn .sun-icon{
+   opacity: 1;
+   transition: .3s;
+}
+
+.theme-btn.active-sun-icon .sun-icon,
+.theme-btn .moon-icon{
+   opacity: 0;
+   transition: .3s;
 }
 
 /* =========================================
@@ -519,7 +621,7 @@ body{
    transition-property: bottom, opacity;
 }
 
-@keyframes wiggle {
+/* @keyframes wiggle {
    0%,
    5%{
       transform: rotateZ(0);
@@ -543,7 +645,7 @@ body{
    100%{
       transform: rotateZ(0);
    }
-}
+} */
 
 .menu-show-btn .bar-01,
 .menu-show-btn .bar-02{
@@ -673,7 +775,7 @@ body{
    animation-delay: 1.8s;
 }
 
-@keyframes up-down {
+/* @keyframes up-down {
    0%{
       transform: translateY(8px);
    }
@@ -683,7 +785,7 @@ body{
    100%{
       transform: translateY(8px);
    }
-}
+} */
 
 .home-scroll-btn:hover{
    color: var(--hover-color);
@@ -937,7 +1039,7 @@ body{
 
 .skill-container{
    max-width: 100%;
-   display: flex;
+   display: grid;
    place-items: center;
    grid-template-columns: repeat(2, 1fr);
    column-gap: 50px;
@@ -1704,28 +1806,155 @@ body{
    Media Queries (max-width: 1600px)
 ========================================= */
 @media screen and (max-width: 1600px) {
-   
+   .cursor {
+      display: none;
+   }
+
+   .sue-container {
+      max-width: 1075px;
+   }
+
+   .avatar-img {
+      width: 385px;
+      height: 385px;
+   }
 }
 
 /* =========================================
    Media Queries (max-width: 1200px)
 ========================================= */
 @media screen and (max-width: 1200px) {
-   
+   .sue-container {
+      max-width: 100%;
+      margin-left: 50px;
+      margin-right: 50px;
+   }
+
+   .section-content {
+      flex-direction: column;
+      column-gap: 0;
+      row-gap: 50px;
+   }
+
+   .about-img {
+      width: 375px;
+   }
+
+   .about-details {
+      width: unset;
+   }
+
+   .about-info {
+      display: grid;
+      place-items: center;
+   }
+
+   .about-description {
+      max-width: 700px;
+   }
+
+   .about-buttons {
+      width: 100%;
+      justify-content: center;
+   }
+
+   .skill-container {
+      grid-template-columns: repeat(1, 1fr);
+   }
+
+   .portfolio-container {
+      grid-template-columns: repeat(2, 1fr);
+   }
 }
 
 /* =========================================
    Media Queries (max-width: 992px)
 ========================================= */
 @media screen and (max-width: 992px) {
-   
+   .avatar-container {
+      flex-direction: column-reverse;
+      row-gap: 12px;
+   }
+
+   .avatar-container .hire-btn-01 {
+      display: block;
+   }
+
+   .avatar-container .hire-btn-02 {
+      display: none;
+   }
+
+   .avatar-img {
+      width: 350px;
+   }
+
+   .avatar-info .text-content {
+      align-items: center;
+   }
+
+   .service-container {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   .portfolio-container {
+      grid-template-columns: repeat(1, 1fr);
+   }
+
+   .swiper {
+      max-width: 700px;
+      height: 450px;
+   }
+
+   .swiper-slide {
+      flex-direction: column;
+   }
+
+   .swiper-slide .client-img {
+      margin-bottom: 35px;
+   }
+
+   .swiper-slide .client-details {
+      max-width: 500px;
+      text-align: center;
+   }
+
+   .contact-container {
+      flex-direction: column;
+      row-gap: 75px;
+   }
+
+   .contact-info {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+   }
+
+   .contact-social-links {
+      justify-content: center;
+   }
 }
 
 /* =========================================
    Media Queries (max-width: 768px)
 ========================================= */
 @media screen and (max-width: 768px) {
-   
+   :root {
+      /* ======= Font sizes ======= */
+      --h1-font-size: 2.3rem;
+      --h2-font-size: 1,97rem;  
+      --h3-font-size: 1.75rem;
+      --h4-font-size: 1.3rem;
+      --h5-font-size: 1.05rem;
+
+      --xlarge-font-size: 1.28rem;
+      --large-font-size: 1.13rem;
+      --medium-font-size: 1.06rem;
+      --base-font-size: 1rem;
+      --small-font-size: .93rem;
+      --tiny-font-size: .88rem;
+   }
 }
 
 /* =========================================

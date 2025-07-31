@@ -293,14 +293,65 @@ window.addEventListener("scroll", () => {
 /* =====================================================
    Customized cursor on mousemove
 ===================================================== */
+const cursor = document.querySelector(".cursor");
+const cursorDot = document.querySelector(".cursor-dot");
+const cursorCircle = document.querySelector(".cursor-circle");
+
+document.addEventListener("mousemove", (e) => {
+   let x = e.clientX;
+   let y = e.clientY;
+
+   cursorDot.style.top = y + "px";
+   cursorDot.style.left = x + "px";
+   cursorCircle.style.top = y + "px";
+   cursorCircle.style.left = x + "px";
+});
 
 // Cursor effects on hover website elements.
+const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
+
+cursorHoverlinks.forEach(cursorHoverlink => {
+   cursorHoverlink.addEventListener("mouseover", () => {
+      cursorDot.classList.add("large");
+      cursorCircle.style.display = "none";
+   });
+});
+
+cursorHoverlinks.forEach(cursorHoverlink => {
+   cursorHoverlink.addEventListener("mouseout", () => {
+      cursorDot.classList.remove("large");
+      cursorCircle.style.display = "block";
+   });
+});
 
 /* =====================================================
    Website dark/light theme
 ===================================================== */
 
 // Change theme and save current theme on click the theme button.
+const themeBtn = document.querySelector(".theme-btn");
+
+themeBtn.addEventListener("click", () => {
+   // Change theme icon and theme on click theme button.
+   themeBtn.classList.toggle("active-sun-icon");
+   document.body.classList.toggle("light-theme");
+
+   // Save theme icon and theme on click theme button.
+   const getCurrentIcon = () => themeBtn.classList.contains("active-sun-icon") ? "sun" : "moon";
+   const getCurrentTheme = () => document.body.classList.contains("light-theme") ? "light" : "dark";
+
+   localStorage.setItem("sue-saved-icon", getCurrentIcon());
+   localStorage.setItem("sue-saved-theme", getCurrentTheme());
+});
+
+// Get saved theme icon and theme on page load.
+const savedIcon = localStorage.getItem("sue-saved-icon");
+const savedTheme = localStorage.getItem("sue-saved-theme");
+
+document.addEventListener("DOMContentLoaded", () => {
+   themeBtn.classList[savedIcon === "sun" ? "add" : "remove"]("active-sun-icon");
+   document.body.classList[savedTheme === "light" ? "add" : "remove"]("light-theme");
+});
 
 // Get saved theme icon and theme on document loaded.
 
