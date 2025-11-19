@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Open/Close Portfolio modals.
 const portfolioCardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
+let galleryThumbs, galleryTop;
 
 portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
    const portfolioCard = portfolioCardWithModal.querySelector(".portfolio-card");
@@ -117,10 +118,36 @@ portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
 
       setTimeout(() => {
          portfolioModal.classList.add("active");
+         galleryThumbs = new Swiper(portfolioModal.querySelector('.gallery-thumbs'), {
+           spaceBetween: 10,
+           slidesPerView: 4,
+           freeMode: true,
+           watchSlidesVisibility: true,
+           watchSlidesProgress: true,
+         });
+         galleryTop = new Swiper(portfolioModal.querySelector('.gallery-top'), {
+           spaceBetween: 10,
+           loop: true,
+           autoplay: {
+             delay: 5000,
+             disableOnInteraction: false,
+           },
+           navigation: {
+             nextEl: '.swiper-button-next',
+             prevEl: '.swiper-button-prev',
+           },
+           thumbs: {
+             swiper: galleryThumbs
+           }
+         });
       }, 300);
    });
 
    modalCloseBtn.addEventListener("click", () => {
+      if (galleryTop && galleryThumbs) {
+         galleryTop.destroy();
+         galleryThumbs.destroy();
+      }
       setTimeout(() => {
          portfolioBackdrop.style.display = "none";
       }, 300);
@@ -358,7 +385,6 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =====================================================
    ScrollReveal JS animations
 ===================================================== */
-
 
 // Common reveal options to create reveal animations.
 ScrollReveal({
